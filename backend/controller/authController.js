@@ -7,4 +7,9 @@ const adduser = async(req, res)=>{
     })
 }
 
-module.exports = {adduser}
+const getUser = async(req, res)=>{
+    const user = await User.find()
+    res.status(200).json(user)
+}
+
+module.exports = {adduser, getUser}
