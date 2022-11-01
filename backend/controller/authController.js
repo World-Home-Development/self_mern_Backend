@@ -8,14 +8,16 @@ const adduser = async(req, res)=>{
 }
 
 const loginUser = async(req, res)=>{
+
     const {email, password} = req.body
-    const user = await User.findOne(email)
-    if(user && user.password === password){
+    const user = await User.findOne({email})
+    console.log(user)
+    if(user && password === user.password){
         res.status(200).json({
             user
         })    
     }else{
-        req.status(500).json({
+        res.status(500).json({
             message:"Invailid Credentials1..."
         })
     }
